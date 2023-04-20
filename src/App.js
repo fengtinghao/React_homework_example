@@ -37,12 +37,12 @@ function App() {
 
     return (
         <svg viewBox={`0 0 ${size.width} ${size.height}`}>
+            <g ref={xAxis} className='x axis' transform={`translate(0,${size.height - size.margin})`} />
+            <g ref={yAxis} className='y axis' transform={`translate(${size.margin},0)`} />
             {intId>=0?<Cursor yrange={scale.y.range()} position={scale.x(intId)} />:null}
             <Lines data={objData} scale={scale} />
             <Points data={objData} scale={scale} hover={Hover} />
             <Label data={objData} scale={scale} current={intId} />
-            <g ref={xAxis} className='x axis' transform={`translate(0,${size.height - size.margin})`} />
-            <g ref={yAxis} className='y axis' transform={`translate(${size.margin},0)`} />
         </svg>
     );
 }
